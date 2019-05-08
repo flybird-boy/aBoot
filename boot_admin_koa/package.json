@@ -4,7 +4,7 @@
   "description": "simple and practical CMS implememted by koa",
   "main": "app/starter.js",
   "scripts": {
-    "start:dev": "nodemon",
+    "dev": "nodemon",
     "start:prod": "node app/starter.js",
     "prettier": "prettier --write app/**/*.js app/*.js app/**/**/*.js app/**/**/**/*.js tests/**/*.js && eslint app tests --fix"
   },
