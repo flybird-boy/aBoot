@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router/index'
 import store from './store/index'
 import { getRequest, post2json, post2Form } from './utils/api';
+import iview from 'iview'
+import 'iview/dist/styles/iview.css'
 
 Vue.config.productionTip = false
 
