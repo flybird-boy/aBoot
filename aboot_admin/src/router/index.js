@@ -7,7 +7,7 @@ Vue.use(Router)
 export const routerConfig = {
   mode: 'history',
   base: process.env.BASE_URL,
-  routes:toutes
+  routes:routes
 }
 
 export default new Router(routerConfig);

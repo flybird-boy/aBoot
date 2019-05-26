@@ -9,9 +9,9 @@ import 'iview/dist/styles/iview.css'
 Vue.config.productionTip = false
 
 //http请求挂载vue原型
-Vue.propotype.get = getRequest;
-Vue.propotype.post2json = post2json;
-Vue.propotype.post2Form = post2Form;
+Vue.prototype.get = getRequest;
+Vue.prototype.post2json = post2json;
+Vue.prototype.post2Form = post2Form;
 
 new Vue({
   router,

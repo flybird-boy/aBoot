@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 //http 请求拦截器
-axios.interceptors.request((config)=>{
+axios.interceptors.request.use((config)=>{
   return config;
 })
 
 //http 返回拦截器
-axios.interceptors.response((req)=>{
+axios.interceptors.response.use((req)=>{
   let status = req.status;
   switch(status){
     case 200: break;
