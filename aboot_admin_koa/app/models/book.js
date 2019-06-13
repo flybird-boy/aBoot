@@ -33,7 +33,7 @@ Book.init(
     author: {
       type: Sequelize.STRING(30),
       allowNull: true,
-      defaultValue: "未名"
+      defaultValue: "小K"
     },
     summary: {
       type: Sequelize.STRING(1000),

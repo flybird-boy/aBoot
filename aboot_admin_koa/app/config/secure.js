@@ -2,11 +2,11 @@
 
 module.exports = {
   db: {
-    database: "lin-cms5",
-    host: "localhost",
+    database: "lincms",
+    host: "106.13.138.126",
     port: 3306,
     username: "root",
-    password: "123456",
+    password: "aA1234567!",
     logging: false
   },
   secret:
