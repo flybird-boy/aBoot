@@ -15,6 +15,9 @@ export default {
   name: 'home',
   components: {
     HelloWorld
+  },
+  created(){
+   this.get('/cms/admin/users')
   }
 }
 </script>

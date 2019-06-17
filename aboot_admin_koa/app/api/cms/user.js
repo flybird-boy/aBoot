@@ -37,6 +37,8 @@ user.linPost(
   adminRequired,
   logger("管理员新建了一个用户"),
   async ctx => {
+    console.log(111111111111);
+
     const v = await new RegisterValidator().validate(ctx);
     await userDao.createUser(ctx, v);
     ctx.success({
