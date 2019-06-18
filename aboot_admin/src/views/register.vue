@@ -59,10 +59,10 @@ data() {
                 { required: true, message: '请输入昵称', trigger: 'blur' }
             ],
             password: [
-                { validator: validatePass, trigger: 'blur' }
+                { required: true,validator: validatePass, trigger: 'blur' }
             ],
             confirm_password: [
-                { validator: validatePassCheck, trigger: 'blur' }
+                {required: true, validator: validatePassCheck, trigger: 'blur' }
             ],
         }
 
@@ -78,7 +78,6 @@ methods: {
         this.$refs[name].validate(async(valid) => {
             if (valid) {
                 await  this.post2json('/cms/user/register')    
-                
             } 
         })
     },

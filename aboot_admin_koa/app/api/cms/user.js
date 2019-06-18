@@ -37,8 +37,6 @@ user.linPost(
   adminRequired,
   logger("管理员新建了一个用户"),
   async ctx => {
-    console.log(111111111111);
-
     const v = await new RegisterValidator().validate(ctx);
     await userDao.createUser(ctx, v);
     ctx.success({
@@ -57,6 +55,8 @@ user.linPost(
   },
   async ctx => {
     const v = await new LoginValidator().validate(ctx);
+    console.log("ctx.manager.userModel bug");
+
     let user = await ctx.manager.userModel.verify(
       v.get("body.nickname"),
       v.get("body.password")
