@@ -19,7 +19,7 @@
 </template>
 
 <script>
-
+import { setStore } from "@/utils/storage.js"
 export default {
 components: {},
 props: {},
@@ -49,7 +49,14 @@ methods: {
     handleSubmit (name) {
         this.$refs[name].validate(async(valid) => {
             if (valid) {
-                await  this.post2json('/cms/user/login',this.loginForm)    
+            let {access_token,refresh_token} =   await  this.$q({
+              method:'post',
+              url:'/cms/user/login',
+              data:this.loginForm
+            })    
+            setStore('access_token','Bearer '+ access_token)
+            setStore('refresh_token','Bearer '+ refresh_token)
+            this.$router.push({path:'/home'})
             } 
         })
     },

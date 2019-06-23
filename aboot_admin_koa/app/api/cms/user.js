@@ -55,16 +55,37 @@ user.linPost(
   },
   async ctx => {
     const v = await new LoginValidator().validate(ctx);
-    console.log("ctx.manager.userModel bug");
-
     let user = await ctx.manager.userModel.verify(
       v.get("body.nickname"),
       v.get("body.password")
     );
     const { accessToken, refreshToken } = getTokens(user);
     ctx.json({
-      access_token: accessToken,
-      refresh_token: refreshToken
+      error_code: 0,
+      msg: "",
+      res: {
+        access_token: accessToken,
+        refresh_token: refreshToken
+      }
+    });
+  }
+);
+
+user.linGet(
+  "userInfo",
+  "/userInfo",
+  {
+    auth: "获取用户信息",
+    module: "用户",
+    mount: false
+  },
+  loginRequired,
+  async ctx => {
+    let res = await userDao.updateUser(ctx);
+    ctx.success({
+      error_code: 0,
+      msg: "",
+      res: res
     });
   }
 );
@@ -145,7 +166,11 @@ user.linGet(
   loginRequired,
   async ctx => {
     let user = await userDao.getAuths(ctx);
-    ctx.json(user);
+    ctx.json({
+      error_code: 0,
+      msg: "",
+      res: user
+    });
   }
 );
 

@@ -1,8 +1,17 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <Button type="primary">Primary</Button>
+    <div class="user-info">
+      <Form :model="userInfo" :label-width="80">
+        <FormItem label="用户名">
+          <Input v-model="userInfo.nickname"></Input>
+        </FormItem>
+        <FormItem label="图像">
+          <Upload action="//jsonplaceholder.typicode.com/posts/">
+            <img :src="userInfo.avatar" alt="" class="user-img">
+          </Upload>
+        </FormItem>
+      </Form>
+    </div>
   </div>
 </template>
 
@@ -16,8 +25,39 @@ export default {
   components: {
     HelloWorld
   },
+  data(){
+    return{
+      userInfo:{}
+    }
+  },
+  methods:{
+    async getUserInfo(){
+      let res = await  this.$q({
+        url:'/cms/user/auths'
+      })
+      this.userInfo = res;
+      console.log(res);
+      
+    }
+  },
   created(){
-   this.get('/cms/admin/users')
+    this.getUserInfo()
   }
 }
 </script>
+<style lang="less">
+.home {
+  .user-info {
+    width: 800px;
+    margin: 0 auto;
+  }
+  .user-img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+  }
+}
+</style>
+

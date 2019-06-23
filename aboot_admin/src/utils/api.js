@@ -10,6 +10,7 @@ axios.interceptors.response.use(req => {
   let status = req.status
   switch (status) {
     case 200:
+      return req.data
       break
     case 400:
       break
